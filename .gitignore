@@ -75,6 +75,7 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 .gitignore
+bin/
 .idea/inspectionProfiles/
 .idea/vcs.xml
 src/main/resources/
