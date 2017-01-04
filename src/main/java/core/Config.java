@@ -18,8 +18,8 @@ import java.util.Map;
 public class Config {
     private Config() {}
 
-    public static final String DEFAULT_CONFIG_FILE_NAME = "config.luna";
-    public static final String DEFAULT_LOGIN_FILE_NAME = "login.luna";
+    public static final String DEFAULT_CONFIG_FILE_NAME = "config.oragon";
+    public static final String DEFAULT_LOGIN_FILE_NAME = "login.oragon";
 
     public static final String LOGIN_KEY = "__LOGIN_TOKEN";
 
@@ -91,7 +91,7 @@ public class Config {
         if (cache.containsKey(LOGIN_KEY))
             return cache.get(LOGIN_KEY);
         else {
-            if (!getLoginFile().exists()) throw new NoLoginException();
+            if (!getLoginFile().exists()) throw new NoLoginException(getLoginFile());
             try {
                 final BufferedSource fileBuffer = initFileRead(getLoginFile());
                 final String loginToken = fileBuffer.readUtf8();

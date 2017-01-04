@@ -15,11 +15,7 @@ public class Init {
     private static JDA jda;
 
     public static void main(String[] args) {
-        System.out.println("OragonBot is starting up...");
-
-        // Create configuration file system...
-
-        System.out.println(Config.getHostingFolder());
+        System.out.println("Oragon is starting up...");
 
         final String LOGIN_TOKEN;
         try {

@@ -3,6 +3,12 @@ version '0.1-unstable'
 
 apply plugin: 'java'
 
+jar {
+    manifest {
+        attributes 'Main-Class': 'core.Init'
+    }
+}
+
 sourceCompatibility = 1.8
 
 repositories {
