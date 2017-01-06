@@ -9,10 +9,12 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 import javax.security.auth.login.LoginException;
+import java.util.Random;
 
 public class Init {
 
     private static JDA jda;
+    private static Random rand;
 
     public static void main(String[] args) {
         System.out.println("Oragon is starting up...");
@@ -30,6 +32,7 @@ public class Init {
         try {
             jda = new JDABuilder(AccountType.BOT).setToken(LOGIN_TOKEN).buildAsync();
             jda.addEventListener(new CommandListener());
+            rand = new Random();
         } catch (LoginException e) {
             // Anything could be at fault here /shrug
             e.printStackTrace();
@@ -37,6 +40,10 @@ public class Init {
             // Don't login that frequent! Wait a bit until the next time...
             e.printStackTrace();
         }
+    }
+    
+    public static Random getRand() {
+        return rand;
     }
 
 }

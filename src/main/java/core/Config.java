@@ -88,10 +88,11 @@ public class Config {
 
     public static String getLoginToken() throws ConfigLoadException, NoLoginException {
         if (cache == null) throw new ConfigLoadException();
-        if (cache.containsKey(LOGIN_KEY))
-            return cache.get(LOGIN_KEY);
-        else {
-            if (!getLoginFile().exists()) throw new NoLoginException(getLoginFile());
+        if (!getLoginFile().exists()) {
+            if (cache.containsKey(LOGIN_KEY))
+                return cache.get(LOGIN_KEY);
+            else throw new NoLoginException(getLoginFile());
+        } else {
             try {
                 final BufferedSource fileBuffer = initFileRead(getLoginFile());
                 final String loginToken = fileBuffer.readUtf8();
@@ -99,10 +100,13 @@ public class Config {
 
                 cache.put(LOGIN_KEY, loginToken);
 
-                // KEY SEEN, NOW INTEGRATED
-
                 Config.storeConfig();
 
+                System.out.println("Login key successfully read and stored from login.oragon into config.oragon.");
+
+                if (!getLoginFile().delete())
+                    System.out.println("login.oragon couldn't be removed. Please remove the file for better performance.");
+                
                 return loginToken;
             } catch (IOException e) {
                 throw new ConfigLoadException("Couldn't create config file", e);
