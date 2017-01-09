@@ -46,7 +46,7 @@ public abstract class Command {
             else
                 return false;
         } catch (CommandErrorInfoWrapper error) {
-            event.getMessage().getChannel().sendMessage("There has been an error executing the command: "+error.getMessage());
+            event.getMessage().getChannel().sendMessage("There has been an error executing the command: Lol "+error.getMessage());
             return false;
         }
     }
