@@ -34,7 +34,7 @@ public class RoomLotteryCommand extends Command {
         
         // TODO: Add listener to jda object (directly here or better, indirectly (request user entry system)) that listens and checks for possible voice channels
         
-        List<Member> prizeNominees = sourceChannel.getMembers();
+        List<Member> prizeNominees = null;// = sourceChannel.getMembers();
         Collections.shuffle(prizeNominees, Init.getRand());
         for (int a = 0; a < winnerAmount && a < prizeNominees.size(); a++)
             event.getGuild().getController().moveVoiceMember(prizeNominees.get(a), prizeChannel);
