@@ -32,13 +32,15 @@ public class RoomLotteryCommand extends Command {
 
         net.dv8tion.jda.core.entities.VoiceChannel sourceChannel;
         
-        // TODO: Add listener to jda object (directly here or better, indirectly (request user entry system)) that listens and checks for possible voice channels
+        // TODO: Add handler to jda object (directly here or better, indirectly (request user entry system)) that listens and checks for possible voice channels
         
-        List<Member> prizeNominees = null;// = sourceChannel.getMembers();
+        List<Member> prizeNominees = sourceChannel.getMembers();
         Collections.shuffle(prizeNominees, Init.getRand());
         for (int a = 0; a < winnerAmount && a < prizeNominees.size(); a++)
             event.getGuild().getController().moveVoiceMember(prizeNominees.get(a), prizeChannel);
         
         return true;
     }
+    
+    public 
 }

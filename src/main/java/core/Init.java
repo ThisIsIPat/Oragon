@@ -12,6 +12,8 @@ import javax.security.auth.login.LoginException;
 import java.util.Random;
 
 public class Init {
+    
+    public static final String LOGIN_KEY = "LOGIN_TOKEN";
 
     private static JDA jda;
     private static Random rand;
@@ -20,6 +22,7 @@ public class Init {
         System.out.println("Oragon is starting up...");
 
         final String LOGIN_TOKEN;
+        // TODO: If first time launch, make first text channel default for user input, offer command there to change that though
         try {
             Config.loadConfig();
             LOGIN_TOKEN = Config.getLoginToken();
