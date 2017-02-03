@@ -133,6 +133,8 @@ public class Config {
     }
 
     public static void putGlobal(String key, String value) {
+        if (value == null)
+            cache.remove(GLOBAL_PREFIX + key);
         cache.put(GLOBAL_PREFIX + key, value);
     }
 
@@ -141,6 +143,8 @@ public class Config {
     }
 
     public static void put(Guild guild, String key, String value) {
+        if (value == null)
+            cache.remove(getGuildPrefix(guild) + key);
         cache.put(getGuildPrefix(guild) + key, value);
     }
 
