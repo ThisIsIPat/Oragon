@@ -55,10 +55,10 @@ public class CommandListener extends ListenerAdapter {
     public void onGuildMessageReceived(GuildMessageReceivedEvent event) {
         // Fetch guild specific prefix
         final String guildId = event.getGuild().getId();
-        String guildSpecificCmdPrefix = Config.get(event.getGuild(), String.format("__%1$s_CMDPREFIX", guildId));
+        String guildSpecificCmdPrefix = Config.get(event.getGuild(), "__"+guildId+"_CMDPREFIX");
         
         if (guildSpecificCmdPrefix == null) {
-            Config.put(event.getGuild(), String.format("__%1$s_CMDPREFIX", guildId), DEFAULT_COMMAND_PREFIX);
+            Config.put(event.getGuild(), "__"+guildId+"_CMDPREFIX", DEFAULT_COMMAND_PREFIX);
             guildSpecificCmdPrefix = DEFAULT_COMMAND_PREFIX;
         }
         

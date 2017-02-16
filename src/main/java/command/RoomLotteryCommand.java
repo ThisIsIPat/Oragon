@@ -63,11 +63,11 @@ public class RoomLotteryCommand extends Command {
 
     @Override
     public CommandHelp getHelp() {
-        return new CommandHelp("roomlottery { *number* | set *channelId* | help }",
+        return new CommandHelp("roomlottery { *number* | setsource *channelId* | help }",
                 "The roomlottery command randomly selects winners from a source channel that has to be selected before." +
                         "To provide that source channel, right-click on the voice channel you wish to be the source channel, click on" +
                         "\"Copy ID\", and paste it after entering \"roomlottery set \", so the final command looks somewhat like this:\n" +
-                        "**\"roomlottery set *VOICECHANNEL_ID*\"**\n" +
+                        "**\"roomlottery setsource *VOICECHANNEL_ID*\"**\n" +
                         "If you want a certain amount to be moved to your current channel, use:\n" +
                         "**\"roomlottery *NUMBER*\"**\n" +
                         "The default amount used in case you enter no number is 1.",
